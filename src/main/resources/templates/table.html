@@ -10,6 +10,7 @@
           <th class="status">Staatus</th>
           <th class="approved">Kooskõlastatud</th>
           <th class="approval-status">Kooskõlastamise staatus</th>
+          <th class="rating">Hinnang</th>
           <th class="approve text-sm-right">Tegevused</th>
         </tr>
       </thead>
@@ -23,6 +24,12 @@
             <td class="status"></td>
             <td class="approved text-nowrap"></td>
             <td class="approval-status text-nowrap"></td>
+			<td class="rating">
+			  <form>
+            	<input type="radio" name="rating" value="1" class="star">
+       	    	<input type="radio" name="rating" value="2" class="star">
+        	</form>
+			</td>
             <td class="approve text-nowrap text-sm-right">
               <button class="btn btn-sm btn-outline-success" value="${approvedStatus}">Kooskõlasta</button>
               <button class="btn btn-sm btn-outline-danger" value="${notApprovedStatus}">Ei kooskõlasta</button>
