@@ -6,7 +6,7 @@ var FormStuff = {
   },
   
   bindUIActions: function() {
-    $("input[type='radio'], input[type='checkbox']").on("change", this.applyConditionalRequired);
+    $("input[type='radio']").on("change", this.applyConditionalRequired);
   },
   
   applyConditionalRequired: function() {
