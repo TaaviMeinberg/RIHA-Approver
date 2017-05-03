@@ -25,9 +25,9 @@
             <td class="approved text-nowrap"></td>
             <td class="approval-status text-nowrap"></td>
 			<td class="rating">
-			  <form method="post" action="#">
+			  <form method="post" action="rating">
 				<div>
-            		<input type="radio" class="input" name="rating" value="1" title="Negatiivne - IT nõudele mittevastamine">
+            		<input type="radio" class="input" name="rating" value="${negative}" title="Negatiivne - IT nõudele mittevastamine">
 					<label>Negatiivne: </label>
 					<div class="reveal-if-active">
 						<input type="text" class="input">
@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				<div>
-       	    		<input type="radio" class="input" name="rating" value="2" title="Neutraalne - mittevastavusi ei tuvastatud">
+       	    		<input type="radio" class="input" name="rating" value="${neutral}" title="Neutraalne - mittevastavusi ei tuvastatud">
 					<label>Neutraalne: </label>
 					<div class="reveal-if-active">
 						<input type="text" class="input">
