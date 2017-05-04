@@ -16,16 +16,15 @@
         new Approver('${infosystemsUrl}').init();
       });
     </script>
+    <script>
+    function peidaKk() {
+    	var $rowsKk = $('#info-systems-table tbody tr').filter(function () {
+    		return $.trim($(this).find('td').text()) === "KOOSKÕLASTATUD"}).toggle();};
+    </script>
   </head>
   <body>
   <button onclick="peidaKk">Peida Kooskõlastatud</button>
-      <script>
-      function peidaKk() {
-        	var $rowsNo = $('#mytable tbody tr').filter(function () {
-            	return $.trim($(this).find('td').text()) === "KOOSKÕLASTATUD"
-       	 	}).toggle();
-    	})};
-    </script>
+      
   
     <#include 'table.html'/>
   </body>
