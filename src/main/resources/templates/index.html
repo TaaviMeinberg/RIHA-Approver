@@ -12,19 +12,21 @@
     <script src="/js/Approver.js"></script>
     <script src="/js/TableSorter.js"></script>
     <script>
-    $('button').on('click', function () {
-        var $rowsNo = $('#mytable tbody tr').filter(function () {
-            return $.trim($(this).find('td').eq(2).text()) === "KOOSKÕLASTATUD"
-        }).toggle();
-    });
-    </script>
-    <script>
       $(function() {
         new Approver('${infosystemsUrl}').init();
       });
     </script>
   </head>
   <body>
+  <button onclick="peidaKk">Peida Kooskõlastatud</button>
+      <script>
+    	$('peidaKk').on('click', function () {
+        	var $rowsNo = $('#mytable tbody tr').filter(function () {
+            	return $.trim($(this).find('td').eq(2).text()) === "KOOSKÕLASTATUD"
+        	}).toggle();
+    	});
+    </script>
+  
     <#include 'table.html'/>
   </body>
 </html>
