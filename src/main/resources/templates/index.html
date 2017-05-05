@@ -20,7 +20,7 @@
   </head>
   <body>
   <script>
-    $('button').on('click', function () {
+    function peidaKk() {
         var $rowsNo = $('#info-systems-table tbody tr').filter(function () {
             return $.trim($(this).find('td').eq(5).text()) === "KOOSKÕLASTATUD"
         }).toggle();
@@ -29,7 +29,7 @@
     	//var $rowsKk = $('#info-systems-table tbody tr').filter(function () {
     		//return $.trim($(this).find('td').text()) === "KOOSKÕLASTATUD"}).toggle();};
     </script>
-  <button class="btn btn-sm btn-outline-success" value="${button}">Peida Kooskõlastatud</button>
+  <button onclick="peidaKk" class="btn btn-sm btn-outline-success">Peida Kooskõlastatud</button>
       
   
     <#include 'table.html'/>
