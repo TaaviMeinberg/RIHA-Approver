@@ -19,18 +19,18 @@
     
   </head>
   <body>
+  
+  <button>Peida Kooskõlastatud</button>
   <script>
-    function peidaKk() {
+  	$('button').on('click', function () {
         var $rowsNo = $('#info-systems-table tbody tr').filter(function () {
-            return $.trim($(this).find('td').eq(5).text()) === "KOOSKÕLASTATUD"
+            return $.trim($(this).find('td').eq(6).text()) === "KOOSKÕLASTATUD"
         }).toggle();
     });
     //function peidaKk() {
     	//var $rowsKk = $('#info-systems-table tbody tr').filter(function () {
     		//return $.trim($(this).find('td').text()) === "KOOSKÕLASTATUD"}).toggle();};
-    </script>
-  <button onclick="peidaKk" class="btn btn-sm btn-outline-success">Peida Kooskõlastatud</button>
-      
+    </script>    
   
     <#include 'table.html'/>
   </body>
