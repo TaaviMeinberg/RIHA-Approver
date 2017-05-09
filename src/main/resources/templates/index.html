@@ -45,6 +45,9 @@
   	$('.findOwner').on('click', function () {
   		var $rowsOwner = $('#info-systems-table tbody tr').filter(function () {
             return $.trim($(this).find('td').eq(0).text()) !== document.getElementById("owner").value}).toggle();
+  		
+  		$(this).text(function(i, v){
+       		return v === 'Otsi omaniku' ? 'Näita Kõiki' : 'Otsi omaniku'})
     });
     </script>    
 	
