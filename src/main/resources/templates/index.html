@@ -19,8 +19,16 @@
     
   </head>
   <body>
+  	<form action="">
+  		<input type="radio" class="hideAppr">Näita ainult kooskõlastamist vajavaid
+  		<input type="radio" class="hideEmptyAppr"> Näita ainult kooskõlastatud
   
-  <button class="hideAppr">Näita kooskõlastamist vajavaid</button>
+	</form>
+	<!--  
+  
+  <button class="hideAppr">Näita kooskõlastamist vajavaid</button> 
+  
+  -->
   <script>
   	$('.hideAppr').on('click', function () {
   		var $rowsNo = $('#info-systems-table tbody tr').filter(function () {
@@ -29,7 +37,11 @@
            return v === 'Näita kooskõlastamist vajavaid' ? 'Näita Kõiki' : 'Näita kooskõlastamist vajavaid'})
     });
     </script>    
+    <!--  
+  
   <button class="hideEmptyAppr">Näita ainult kooskõlastatud</button>
+  
+  -->
   <script>
   	$('.hideEmptyAppr').on('click', function () {
   		var $rowsNo = $('#info-systems-table tbody tr').filter(function () {
