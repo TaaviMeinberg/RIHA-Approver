@@ -16,9 +16,9 @@ $(document).ready(function() {
   		//$(this).text(function(i, v){
            //return v === 'Näita ainult kooskõlastatud' ? 'Näita Kõiki' : 'Näita ainult kooskõlastatud'})
     });
-  	$('.findOwner').on('click', function () {
+  	$('.findOwner').on('keyup', function () {
   		var $rowsOwner = $('#info-systems-table tbody tr').filter(function () {
-            return $.trim($(this).find('td').eq(0).text()) !== document.getElementById("owner").value}).toggle();
+            return $.trim($(this).find('td').eq(0).text()) !== document.getElementById("owner").value});
   		
   		$(this).text(function(i, v){
        		return v === 'Otsi omaniku' ? 'Näita Kõiki' : 'Otsi omaniku'})
