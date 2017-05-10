@@ -26,7 +26,7 @@ $(document).ready(function() {
   	  var input, filter, table, tr, td, i;
   	  input = document.getElementById("searchOwner");
   	  filter = input.value.toUpperCase();
-  	  table = document.getElementById("#info-systems-table");
+  	  table = document.getElementById("info-systems-table");
   	  tr = table.getElementsByTagName("tr");
   	  for (i = 0; i < tr.length; i++) {
   	    td = tr[i].getElementsByTagName("td")[0];
