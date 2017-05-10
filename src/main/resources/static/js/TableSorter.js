@@ -22,7 +22,7 @@ $(document).ready(function() {
 //  		$(this).text(function(i, v){
 //       		return v === 'Otsi omaniku' ? 'Näita Kõiki' : 'Otsi omaniku'})
 //    });
-  	function searchFun2() {
+  	$('.findOwner').on('keyup', function () {
   	  var input, filter, table, tr, td, i;
   	  input = document.getElementById("owner");
   	  filter = input.value.toUpperCase();
