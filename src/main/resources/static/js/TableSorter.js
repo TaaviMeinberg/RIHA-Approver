@@ -12,11 +12,10 @@ $(document).ready(function() {
   		var $rowsEmptyAppr = $('#info-systems-table tbody tr').filter(function () {
             return $.trim($(this).find('td').eq(6).text()) === ""}).toggle();
   		
-  		//for normal buttons:
   		//$(this).text(function(i, v){
            //return v === 'Näita ainult kooskõlastatud' ? 'Näita Kõiki' : 'Näita ainult kooskõlastatud'})
     });
-  	$('.findOwner').on('keyup', function () {
+  	$('.searchOwner').on('keyup', function () {
   		var $rowsOwner = $('#info-systems-table tbody tr').filter(function () {
             return $.trim($(this).find('td').eq(0).text()) !== document.getElementById("owner").value});
   		
