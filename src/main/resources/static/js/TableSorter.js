@@ -24,7 +24,7 @@ $(document).ready(function() {
 //    });
   	function searchFun2() {
   	  var input, filter, table, tr, td, i;
-  	  input = document.getElementById("searchOwner");
+  	  input = document.getElementById("owner");
   	  filter = input.value.toUpperCase();
   	  table = document.getElementById("info-systems-table");
   	  tr = table.getElementsByTagName("tr");
