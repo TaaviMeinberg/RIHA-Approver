@@ -15,13 +15,15 @@ $(document).ready(function() {
   		//$(this).text(function(i, v){
            //return v === 'Näita ainult kooskõlastatud' ? 'Näita Kõiki' : 'Näita ainult kooskõlastatud'})
     });
-  	$('.owner').on('keyup', function () {
+
+  	$('.findOwner').on('click', function () {
   		var $rowsOwner = $('#info-systems-table tbody tr').filter(function () {
-            return $.trim($(this).find('td').eq(0).text()) !== document.getElementById("owner").value});
+            return $.trim($(this).find('td').eq(0).text()) !== document.getElementById("owner").value}).toggle();
   		
-//  		$(this).text(function(i, v){
-//       		return v === 'Otsi omaniku' ? 'Näita Kõiki' : 'Otsi omaniku'})
-    });
+  		$(this).text(function(i, v){
+       		return v === 'Otsi omaniku' ? 'Näita Kõiki' : 'Otsi omaniku'})
+  	});
+  	
 //  	$('.findOwner').on('keyup', function () {
 //  	  var input, filter, table, tr, td, i;
 //  	  input = document.getElementById("owner");
