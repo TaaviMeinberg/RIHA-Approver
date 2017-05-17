@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   	$('.findOwner').on('click', function () {
   		var $rowsOwner = $('#info-systems-table tbody tr').filter(function () {
-            return $.trim($('td:not(:contains(document.getElementById("ownerS").value))'))}).toggle();   //!== document.getElementById("owner").value}).toggle();
+            return $.trim($(this).find('td:not(:contains(("#ownerS").value))').eq(0).text())}).toggle();   //!== document.getElementById("owner").value}).toggle();
   		
   		$(this).text(function(i, v){
        		return v === 'Otsi omaniku' ? 'Näita Kõiki' : 'Otsi omaniku'})
