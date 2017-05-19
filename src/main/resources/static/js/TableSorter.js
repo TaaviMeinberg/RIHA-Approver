@@ -3,7 +3,7 @@ $(document).ready(function() {
   		var $rowsAppr = $('#info-systems-table tbody tr').filter(function () {
             return $.trim($(this).find('td').eq(6).text()) !== ""}).toggle();
   		
-  		//for normal buttons
+  		//for normal button
   		//$(this).text(function(i, v){
           // return v === 'Näita kooskõlastamist vajavaid' ? 'Näita Kõiki' : 'Näita kooskõlastamist vajavaid'})
     });
@@ -11,11 +11,11 @@ $(document).ready(function() {
   	$('.hideEmptyAppr').on('click', function () {
   		var $rowsEmptyAppr = $('#info-systems-table tbody tr').filter(function () {
             return $.trim($(this).find('td').eq(6).text()) === ""}).toggle();
-  		
+  	//for normal button
   		//$(this).text(function(i, v){
            //return v === 'Näita ainult kooskõlastatud' ? 'Näita Kõiki' : 'Näita ainult kooskõlastatud'})
     });
-
+// old code for owner search bar with buttons
 //  	$('.findOwner').on('click', function () {
 //  		var $rowsOwner = $('#info-systems-table tbody tr').filter(function () {
 //  			return $.trim($(this).find('td').eq(0).text() !== document.getElementById("owner").value}).toggle();
@@ -26,11 +26,8 @@ $(document).ready(function() {
   	
 
     $('.dataTable .filters input').keyup(function(e){
-//        
-//        var code = e.keyCode || e.which;
-//        if (code == '9') return;
-//        
-        var $input = $(this);
+
+    	var $input = $(this);
         inputContent = $input.val().toLowerCase();
         idk = $input.parents('.table-responsive');
         column = idk.find('.filters th').index($input.parents('th'));
@@ -48,7 +45,7 @@ $(document).ready(function() {
         $filteredRows.hide();
         
         if ($filteredRows.length === $rows.length) {
-            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
+            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Tulemusi ei leitud.</td></tr>'));
         }
     });
 });
