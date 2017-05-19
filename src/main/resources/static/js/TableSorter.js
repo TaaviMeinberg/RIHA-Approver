@@ -25,16 +25,16 @@ $(document).ready(function() {
 //  	}));
   	
 
-    $('.filterable .filters input').keyup(function(e){
+    $('.dataTable .filters input').keyup(function(e){
         
         var code = e.keyCode || e.which;
         if (code == '9') return;
         
-        var $input = $(this),
-        inputContent = $input.val().toLowerCase(),
-        $panel = $input.parents('.filterable'),
-        column = $panel.find('.filters th').index($input.parents('th')),
-        $table = $panel.find('.dataTable'),
+        var $input = $(this);
+        inputContent = $input.val().toLowerCase();
+        
+        column = $find('.filters th').index($input.parents('th'));
+        $table = $find('.dataTable');
         $rows = $table.find('tbody tr');
         
         var $filteredRows = $rows.filter(function(){
