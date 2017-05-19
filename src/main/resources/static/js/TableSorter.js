@@ -26,10 +26,10 @@ $(document).ready(function() {
   	
 
     $('.dataTable .filters input').keyup(function(e){
-        
-        var code = e.keyCode || e.which;
-        if (code == '9') return;
-        
+//        
+//        var code = e.keyCode || e.which;
+//        if (code == '9') return;
+//        
         var $input = $(this);
         inputContent = $input.val().toLowerCase();
         idk = $input.parents('.table-responsive');
