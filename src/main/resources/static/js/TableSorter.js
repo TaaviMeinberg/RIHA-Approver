@@ -32,9 +32,9 @@ $(document).ready(function() {
         
         var $input = $(this);
         inputContent = $input.val().toLowerCase();
-        
-        column = $find('.filters th').index($input.parents('th'));
-        $table = $find('.dataTable');
+        idk = $input.parents('.table-responsive');
+        column = idk.find('.filters th').index($input.parents('th'));
+        $table = idk.find('.dataTable');
         $rows = $table.find('tbody tr');
         
         var $filteredRows = $rows.filter(function(){
