@@ -16,28 +16,14 @@ $(document).ready(function() {
            //return v === 'Näita ainult kooskõlastatud' ? 'Näita Kõiki' : 'Näita ainult kooskõlastatud'})
     });
 
-  	$('.findOwner').on('click', function () {
-  		var $rowsOwner = $('#info-systems-table tbody tr').filter(function () {
-  			return $.trim($(this).find('td').eq(0).text() !== document.getElementById("owner").value}).toggle();
-  		//return $.trim($(this).find('td:not(:contains(("#ownerS").value))').eq(0).text())}).toggle();   //
-  		$(this).text(function(i, v){
-       		return v === 'Otsi omaniku' ? 'Näita Kõiki' : 'Otsi omaniku'})
-  	}));
+//  	$('.findOwner').on('click', function () {
+//  		var $rowsOwner = $('#info-systems-table tbody tr').filter(function () {
+//  			return $.trim($(this).find('td').eq(0).text() !== document.getElementById("owner").value}).toggle();
+//  		//return $.trim($(this).find('td:not(:contains(("#ownerS").value))').eq(0).text())}).toggle();   //
+//  		$(this).text(function(i, v){
+//       		return v === 'Otsi omaniku' ? 'Näita Kõiki' : 'Otsi omaniku'})
+//  	}));
   	
-
-//    $('.filterable .btn-filter').click(function(){
-//        var $panel = $(this).parents('.filterable'),
-//        $filters = $panel.find('.filters input'),
-//        $tbody = $panel.find('.table tbody');
-//        if ($filters.prop('disabled') == true) {
-//            $filters.prop('disabled', false);
-//            $filters.first().focus();
-//        } else {
-//            $filters.val('').prop('disabled', true);
-//            $tbody.find('.no-result').remove();
-//            $tbody.find('tr').show();
-//        }
-//    });
 
     $('.filterable .filters input').keyup(function(e){
         
@@ -48,7 +34,7 @@ $(document).ready(function() {
         inputContent = $input.val().toLowerCase(),
         $panel = $input.parents('.filterable'),
         column = $panel.find('.filters th').index($input.parents('th')),
-        $table = $panel.find('.#info-systems-table'),
+        $table = $panel.find('.dataTable'),
         $rows = $table.find('tbody tr');
         
         var $filteredRows = $rows.filter(function(){
