@@ -48,7 +48,7 @@ $(document).ready(function() {
         inputContent = $input.val().toLowerCase(),
         $panel = $input.parents('.filterable'),
         column = $panel.find('.filters th').index($input.parents('th')),
-        $table = $panel.find('.dataTable'),
+        $table = $panel.find('.#info-systems-table'),
         $rows = $table.find('tbody tr');
         
         var $filteredRows = $rows.filter(function(){
