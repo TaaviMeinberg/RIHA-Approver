@@ -73,8 +73,9 @@ describe('Approver', function() {
       loadFixtures('table.html');
       parametrizeTemplateRow();
 
-      new Approver()._addApprovalsData([{"uri":"http://base.url/shortname", "timestamp":"2015-01-01T10:00:00", "status": "KOOSKÕLASTATUD"}]);
-
+      new Approver()._addApprovalsData([{"comment":"Infosüsteem on edukalt kooskõlastatud.", "token":"nimi:{ eesnimi:Taavi, perekonnanimi:Meinberg } }, asutus:{ registrikood:239857235, nimetus:RIHA }", "uri":"http://base.url/shortname", "timestamp":"2015-01-01T10:00:00", "status": "KOOSKÕLASTATUD"}]);
+      
+      expect($('tbody .approval-comment').text()).toBe('Infosüsteem on edukalt kooskõlastatud.');
       expect($('tbody .approved').text()).toBe('2015-01-01T10:00:00');
       expect($('tbody .approval-status').text()).toBe('KOOSKÕLASTATUD');
     });
@@ -83,13 +84,14 @@ describe('Approver', function() {
       loadFixtures('table.html');
       parametrizeTemplateRow();
 
-      new Approver()._addApprovalsData([{"uri":"http://base.url/shortname", "timestamp":"2016-01-01T10:00:00", "status": "KOOSKÕLASTATUD"}]);
-
+      new Approver()._addApprovalsData([{"comment":"Infosüsteem on edukalt kooskõlastatud.", "token":"nimi:{ eesnimi:Taavi, perekonnanimi:Meinberg } }, asutus:{ registrikood:239857235, nimetus:RIHA }", "uri":"http://base.url/shortname", "timestamp":"2016-01-01T10:00:00", "status": "KOOSKÕLASTATUD"}]);
+      
+      expect($('tbody .approval-comment').text()).toBe('Infosüsteem on edukalt kooskõlastatud.');
       expect($('tbody .approved').text()).toBe('2016-01-01T10:00:00');
       expect($('tbody .approval-status').text()).toBe('KOOSKÕLASTATUD');
     });
   });
-  
+  //Needs to be rewritten to account for latest approval method
   describe('Approve button', function() {
     it('changes info system status to Approved and sets approval timestamp', function() {
       setFixtures(
@@ -97,14 +99,15 @@ describe('Approver', function() {
           '<td class="approved"></td>' +
           '<td class="approval-status"></td>' +
           '<td class="approve">' +
-            '<button data-status="KOOSKÕLASTATUD">kooskõlasta</button>' +
-            '<button data-status="MITTE KOOSKÕLASTATUD">ei kooskõlasta</button>' +
+            '<button id="btnApproval" class="btn btn-sm btn-outline-primary" data-status="KOOSKÕLASTATUD">hinda</button>' +
           '</td>' +
         '</tr>');
-      spyOn($, 'post').and.returnValue(promise({id: 'http://base.url/shortname', timestamp: '2016-12-05T15:29:00.128468', status: 'KOOSKÕLASTATUD'}));
+      spyOn($, 'post').and.returnValue(promise({id: 'http://base.url/shortname', timestamp: '2016-12-05T15:29:00.128468', status: 'KOOSKÕLASTATUD', comment: "kommentaar"}));
       var event  = {target: $('button[data-status="KOOSKÕLASTATUD"]')};
-
-      new Approver().approveInfosystem(event);
+      var modal = document.getElementById('modal');
+      var infosystemRow = "1000-RIA";
+      
+      addApproval(infosystemRow, modal);
 
       expect($('.approved').text()).toBe('2016-12-05T15:29:00.128468');
       expect($('.approval-status').text()).toBe('KOOSKÕLASTATUD');
