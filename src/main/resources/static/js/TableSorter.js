@@ -48,4 +48,23 @@ $(document).ready(function() {
             $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Tulemusi ei leitud.</td></tr>'));
         }
     });
+    $('.dataTable .filters select').keyup(function(e){
+    	
+    	
+        
+        var $filteredRows = $rows.filter(function(){
+            var value = $(this).find('td').eq(column).text().toLowerCase();
+            return value.indexOf(inputContent) === -1;
+        });
+        
+        $table.find('tbody .no-result').remove();
+        
+        $rows.show();
+        $filteredRows.hide();
+        
+        if ($filteredRows.length === $rows.length) {
+            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Tulemusi ei leitud.</td></tr>'));
+        }
+    });
+
 });
