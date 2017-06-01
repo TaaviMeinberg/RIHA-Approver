@@ -29,9 +29,9 @@ $(document).ready(function() {
 
     	var $input = $(this);
         inputContent = $input.val().toLowerCase();
-        idk = $input.parents('.table-responsive');
-        column = idk.find('.filters th').index($input.parents('th'));
-        $table = idk.find('.dataTable');
+        tableDiv = $input.parents('.table-responsive');
+        column = tableDiv.find('.filters th').index($input.parents('th'));
+        $table = tableDiv.find('.dataTable');
         $rows = $table.find('tbody tr');
         
         var $filteredRows = $rows.filter(function(){
@@ -48,23 +48,29 @@ $(document).ready(function() {
             $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Tulemusi ei leitud.</td></tr>'));
         }
     });
-    $('.dataTable .filters select').keyup(function(e){
-    	
-    	
+    $('.dataTable .filters select').on('change',function(e){
+    	var $input = $(this);
+        inputContent = $input.val().toLowerCase();
+        tableDiv = $input.parents('.table-responsive');
+        column = tableDiv.find('.filters th').index($input.parents('th'));
+        $table = tableDiv.find('.dataTable');
+        $rows = $table.find('tbody tr');
         
-        var $filteredRows = $rows.filter(function(){
-            var value = $(this).find('td').eq(column).text().toLowerCase();
-            return value.indexOf(inputContent) === -1;
-        });
-        
-        $table.find('tbody .no-result').remove();
-        
-        $rows.show();
-        $filteredRows.hide();
-        
-        if ($filteredRows.length === $rows.length) {
-            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Tulemusi ei leitud.</td></tr>'));
-        }
+        var d = new Date();
+   		var rex = new RegExp($('#filterText').val());
+   		var value = $(this).find('td').eq(column);
+   		
+    	if(rex =="/all/"){
+    			clearFilter()}
+    		else if(rex =="/7days/"){
+    			
+    			
+                if () {
+					
+				}
+    			return value.indexOf(inputContent) === -1;
+    		}    	
+       
     });
 
 });
