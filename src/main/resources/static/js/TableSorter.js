@@ -48,6 +48,8 @@ $(document).ready(function() {
             $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Tulemusi ei leitud.</td></tr>'));
         }
     });
+    
+    
     $('.dataTable .filters select').on('change',function(e){
     	var $input = $(this);
         inputContent = $input.val().toLowerCase();
@@ -56,20 +58,49 @@ $(document).ready(function() {
         $table = tableDiv.find('.dataTable');
         $rows = $table.find('tbody tr');
         
-        var d = new Date();
+        var dt = new Date();
+        
    		var rex = new RegExp($('#filterText').val());
    		var value = $(this).find('td').eq(column);
+   		var valStr = value.toString();
+   		var valDt = valStr.substring(0, 10);
+   		var valTm = valStr.substring(11, 16);
+   		var dtSplit = valDt.split("-");
    		
-    	if(rex =="/all/"){
-    			clearFilter()}
-    		else if(rex =="/7days/"){
+   		//2017-06-02T09:36:03.42
+   		
+   		var valYr = dtSplit(0);
+   		var valMn = dtSplit(1);
+   		var valDy = dtSplit(2);
+   		
+   		var valDate = new Date(valMn, valDy, valYr, valTm);
+
+   		if(rex =="/all/"){
+    		$rows.show()
+    		}
+    	else if(rex =="/7days/"){
     			
-    			
-                if () {
-					
-				}
-    			return value.indexOf(inputContent) === -1;
-    		}    	
+    		if (dt - valDate >= 604800000) {
+				$rows.show();
+			}else {
+				$rows.hide();
+			}
+    		
+    		
+    		return value.indexOf(inputContent) === -1;
+    	}
+    	else if(rex =="/1hour/"){
+			
+    		if (dt - valDate >= 3600000) {
+				$rows.show();
+			}else {
+				$rows.hide();
+			}
+    		
+    		
+    		return value.indexOf(inputContent) === -1;
+    	}
+   		
        
     });
 
