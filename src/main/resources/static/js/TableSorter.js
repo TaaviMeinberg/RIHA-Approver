@@ -61,7 +61,7 @@ $(document).ready(function() {
         var dt = new Date();
         
    		var rex = new RegExp($('#filterText').val());
-   		var value = $(this).find('td').eq(column);
+   		var value = $(this).find('td').eq(column).text().toLowerCase();
    		var valStr = value.toString();
    		var valDt = valStr.substring(0, 10);
    		var valTm = valStr.substring(11, 16);
@@ -74,13 +74,17 @@ $(document).ready(function() {
    		var valDy = dtSplit(2);
    		
    		var valDate = new Date(valMn, valDy, valYr, valTm);
-
+   		
+   		var $filteredRows = $rows.filter(function(){
+            return value.indexOf(inputContent) === -1;
+        });
+   		
    		if(rex =="/all/"){
     		$rows.show()
     		}
     	else if(rex =="/7days/"){
     			
-    		if (dt - valDate >= 604800000) {
+    		if (dt - (valDate+ 10,800,000) >= 604800000) {
 				$rows.show();
 			}else {
 				$rows.hide();
@@ -91,7 +95,7 @@ $(document).ready(function() {
     	}
     	else if(rex =="/1hour/"){
 			
-    		if (dt - valDate >= 3600000) {
+    		if (dt - (valDate+10,800,000) >= 3600000) {
 				$rows.show();
 			}else {
 				$rows.hide();
