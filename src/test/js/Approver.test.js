@@ -96,14 +96,15 @@ describe('Approver', function() {
 	it ("invokes modal call method & fills #first_name value", function() {
 		loadFixtures('index.html');
 		
-		spyEvent = spyOnEvent('#btnApproval', 'click');
-		$('#btnApproval').trigger( "click" );
+	    var spyEvent = spyOnEvent('#btnApprove', 'click');
+	    $('#btnApprove').click();
+	    expect('click').toHaveBeenTriggeredOn('#btnApprove');
+	    expect(spyEvent).toHaveBeenTriggered();
+		
 		//spyOn($.fn, "val").and.returnValue("Joosep");
+		//var result = $("#first_name").val();
 		
-		var result = $("#first_name").val();
 		
-		expect('click').toHaveBeenTriggeredOn('#btnApproval');
-		expect(spyEvent).toHaveBeenTriggered();
 		//expect(result).toBe("Joosep");
 	});
 	  
