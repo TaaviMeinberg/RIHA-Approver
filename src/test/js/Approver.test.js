@@ -95,17 +95,15 @@ describe('Approver', function() {
   describe('Approve button', function() {
 	it ("invokes modal call method & fills #first_name value", function() {
 		loadFixtures('index.html');
+		spyOn($.fn, "val").and.returnValue("Joosep");
+		var result = $("#first_name").val();
 		
 	    var spyEvent = spyOnEvent('#btnApprove', 'click');
 	    $('#btnApprove').click();
+	    
 	    expect('click').toHaveBeenTriggeredOn('#btnApprove');
 	    expect(spyEvent).toHaveBeenTriggered();
-		
-		//spyOn($.fn, "val").and.returnValue("Joosep");
-		//var result = $("#first_name").val();
-		
-		
-		//expect(result).toBe("Joosep");
+	    expect(result).toBe("Joosep");
 	});
 	  
     it('changes info system status to Approved and sets approval timestamp', function() {
