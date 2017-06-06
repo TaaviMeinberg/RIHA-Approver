@@ -144,7 +144,6 @@ describe('Approver', function() {
     			'</div>'+
     		'</div>');
       spyOn($, 'post').and.returnValue(promise({id: 'http://base.url/shortname', timestamp: '2016-12-05T15:29:00.128468', status: 'KOOSKÕLASTATUD', comment: "kommentaar"}));
-      //var event  = {target: $('button[data-status="KOOSKÕLASTATUD"]')};
       var infosystemRow = $('#btnApproval').closest('tr');
       var modal = {target: $('#modal')};
       
@@ -156,6 +155,22 @@ describe('Approver', function() {
       expect($('.approval-status').text()).toBe('KOOSKÕLASTATUD');
       expect($('.approval-comment').text()).toBe('kommentaar');
     });
+  });
+  
+  describe('log button', function() {
+	  it ("clicking log button redirects to /log", function() {
+		  	loadFixtures('table.html');
+		  	var approver = new Approver();
+		  	
+		  	spyOn(approver, '_redirect');
+		  	spyEvent = spyOnEvent('#btnApprovalLog', 'click');
+		  	approver._sendLogPost("TEST ID");
+		  	
+		  	$('#btnApprovalLog').trigger( "click" );
+		  	expect('click').toHaveBeenTriggeredOn('#btnApprovalLog');
+			expect(spyEvent).toHaveBeenTriggered();
+			expect(approver._redirect).toHaveBeenCalledWith('/log');
+		});
   });
 });
 
