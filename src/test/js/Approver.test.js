@@ -165,8 +165,8 @@ describe('Approver', function() {
 	    }
 	  it ("clicking log button redirects to /log", function() {
 		  	loadFixtures('table.html');
-		  	approver._createTableRows(data);
 		  	var approver = new Approver();
+		  	approver._createTableRows(data);
 		  	var infosystemRow = $('#btnApprovalLog').closest('tr');
 		  	
 		  	spyOn(approver, '_redirect');
