@@ -165,14 +165,16 @@ describe('Approver', function() {
 	    }
 	  it ("clicking log button redirects to /log", function() {
 		  	loadFixtures('table.html');
+		  	parametrizeTemplateRow();
 		  	var approver = new Approver();
-		  	approver._createTableRows(data);
 		  	var infosystemRow = $('#btnApprovalLog').closest('tr');
 		  	
-		  	spyOn(approver, '_redirect');
-		  	spyEvent = spyOnEvent('#btnApprovalLog', 'click');
-		  	approver._sendLogPost(infosystemRow);
 		  	
+		  	spyEvent = spyOnEvent('#btnApprovalLog', 'click');
+		  	spyOn($, 'post').and.returnValue(promise({id: 'http://base.url/shortname'}));
+		  	approver._sendLogPost(infosystemRow);
+		  	spyOn(approver, '_redirect');
+
 		  	$('#btnApprovalLog').trigger( "click" );
 		  	expect('click').toHaveBeenTriggeredOn('#btnApprovalLog');
 			expect(spyEvent).toHaveBeenTriggered();
