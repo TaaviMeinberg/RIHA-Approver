@@ -158,13 +158,20 @@ describe('Approver', function() {
   });
   
   describe('log button', function() {
+	  function parametrizeTemplateRow() {
+	      $('tbody').append($('#row-template').html());
+	      $('tbody tr').attr('data-id', 'http://base.url/shortname');
+	      $('tbody td.last-modified').text('2016-01-01T10:00:00');
+	    }
 	  it ("clicking log button redirects to /log", function() {
 		  	loadFixtures('table.html');
+		  	parametrizeTemplateRow();
 		  	var approver = new Approver();
+		  	var infosystemRow = $('#btnApprovalLog').closest('tr');
 		  	
 		  	spyOn(approver, '_redirect');
 		  	spyEvent = spyOnEvent('#btnApprovalLog', 'click');
-		  	approver._sendLogPost("TEST ID");
+		  	approver._sendLogPost(infosystemRow);
 		  	
 		  	$('#btnApprovalLog').trigger( "click" );
 		  	expect('click').toHaveBeenTriggeredOn('#btnApprovalLog');
