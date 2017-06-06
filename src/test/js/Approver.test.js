@@ -172,9 +172,10 @@ describe('Approver', function() {
 		  	
 		  	spyEvent = spyOnEvent('#btnApprovalLog', 'click');
 		  	spyOn($, 'post').and.returnValue(promise({id: 'http://base.url/shortname'}));
-		  	approver._sendLogPost(infosystemRow);
 		  	spyOn(approver, '_redirect');
-
+		  	
+		  	approver._sendLogPost(infosystemRow);
+		  	
 		  	$('#btnApprovalLog').trigger( "click" );
 		  	expect('click').toHaveBeenTriggeredOn('#btnApprovalLog');
 			expect(spyEvent).toHaveBeenTriggered();
