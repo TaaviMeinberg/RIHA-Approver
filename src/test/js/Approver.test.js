@@ -165,7 +165,7 @@ describe('Approver', function() {
 	    }
 	  it ("clicking log button redirects to /log", function() {
 		  	loadFixtures('table.html');
-		  	parametrizeTemplateRow();
+		  	approver._createTableRows(data);
 		  	var approver = new Approver();
 		  	var infosystemRow = $('#btnApprovalLog').closest('tr');
 		  	
