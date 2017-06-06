@@ -36,11 +36,7 @@ function Approver(infosystemsUrl) {
     $('body').on("click",'.approve #btnApprovalLog', function(event){
     	var clickedButton = $(event.target);
     	var infosystemRow = clickedButton.closest('tr');
-    	$.post('/infosys/', {
-			  id : infosystemRow.data('id')
-		  }).done(function(result) {
-			  self._redirect('/log');
-		  });
+    	self._sendLogPost(infosystemRow);
 	});
   };
   
@@ -53,6 +49,14 @@ function Approver(infosystemsUrl) {
   
   self._redirect = function(url) {
 		window.location = url;
+  };
+  
+  self._sendLogPost = function(infosystemRow) {
+	  $.post('/infosys/', {
+		  id : infosystemRow.data('id')
+	  }).done(function(result) {
+		  self._redirect('/log');
+	  });
   };
   
   function getBase64Encoded(rawStr){
